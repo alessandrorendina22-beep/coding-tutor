@@ -43,9 +43,19 @@ Immagina di essere il cassiere della Bottega dell'Alchimista. Un guerriero entra
 ## La mia soluzione e i miei dubbi
 
 ```c
-// Incolla qui il tuo codice
+#include <stdio.h>
+
+int main(){
+    int pozioni=3;
+    float prezzo_singolo=2.50;
+    float totale=pozioni*prezzo_singolo;
+    printf("Il numero delle pozioni comprate è %d\n", pozioni);
+    printf("Il costo della singola pozione è %.2f\n", prezzo_singolo);
+    printf("Il totale da pagare è %.2f\n", totale);
+    printf("\"Buona giornata e grazie di essere passati qui alla Bottega dell'Alchimista\"\n");
+}
 
 
 ```
 
-*(Scrivi qui eventuali dubbi, errori del compilatore o domande che ti sono venute mentre programmavi)*
+*Argomento molto interessante sopratutto gli specificatori di formato*
