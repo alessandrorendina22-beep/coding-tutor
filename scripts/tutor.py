@@ -39,9 +39,9 @@ else:
         "e scrivi una correzione costruttiva in fondo al file."
     )
 
-# Chiamata al modello Gemini (usiamo gemini-2.5-flash)
+# Chiamata al modello Gemini aggiornato
 response = client.models.generate_content(
-    model="gemini-2.5-flash",
+    model="gemini-3.8-flash",
     contents=prompt,
 )
 
