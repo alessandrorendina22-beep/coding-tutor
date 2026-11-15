@@ -28,9 +28,13 @@ Scrivi un programma in C che:
 ## La mia soluzione e i miei dubbi
 
 ```c
-// Inserisci qui il tuo codice C:
+#include <stdio.h>
 
+int main(){
+   printf("===SCHEDA PERSONAGGIO==\n *KEVIN* \n *Guerriero* \n *Livello 1* \n All'attacco!");
+   return 0;
+}
 ```
 
-**I miei dubbi / Cosa ho trovato difficile:**
+**Non ho trovato difficile nulla!**
 - 
