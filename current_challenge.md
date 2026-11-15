@@ -59,3 +59,48 @@ int main(){
 ```
 
 *Argomento molto interessante sopratutto gli specificatori di formato*
+
+---
+# Correzione del Tutor
+Ciao! È un piacere vedere il tuo entusiasmo per gli specificatori di formato: sono davvero uno degli strumenti fondamentali del C per comunicare con l'utente in modo ordinato e professionale.
+
+Vediamo insieme l'analisi del tuo codice!
+
+---
+
+### Analisi della Soluzione
+
+Il tuo codice è **eccellente**. Hai centrato in pieno tutti gli obiettivi richiesti dalla consegna. Ecco cosa hai fatto particolarmente bene:
+
+1. **Scelta e inizializzazione delle variabili:**
+   - Hai usato correttamente `int` per `pozioni` e `float` per `prezzo_singolo`.
+   - Il calcolo `float totale = pozioni * prezzo_singolo;` è perfetto. Il C effettua in automatico una *conversione implicita* (promuove l'intero a float durante l'operazione) per garantirti un risultato decimale preciso.
+2. **Specificatori di formato:**
+   - Hai usato `%d` per l'intero e `%.2f` per i decimali. Il formato `%.2f` è la scelta ideale per gestire valori monetari o misure che richiedono solo due cifre decimali.
+3. **Sequenze di escape:**
+   - Ottimo l'uso di `\"` per stampare le virgolette senza interrompere la stringa e di `\n` per andare a capo.
+
+---
+
+### Piccoli consigli da professionista (Best Practices)
+
+Non ci sono veri e propri errori nel tuo codice, ma ecco due dettagli per renderlo ancora più solido:
+
+1. **Aggiungere `return 0;` alla fine del `main`:**
+   In C, la funzione `main` restituisce un intero (`int main()`). Scrivere `return 0;` prima della parentesi graffa di chiusura è una buona abitudine: comunica al sistema operativo che il programma è terminato con successo (senza errori).
+   ```c
+       printf("\"Buona giornata e grazie di essere passati qui alla Bottega dell'Alchimista\"\n");
+       return 0;
+   }
+   ```
+2. **Spaziature per la leggibilità (Stile):**
+   Mettere uno spazio attorno agli operatori rende il codice più facile da leggere:
+   - Scrivi `int pozioni = 3;` invece di `int pozioni=3;`
+   - Scrivi `float totale = pozioni * prezzo_singolo;`
+
+---
+
+## Valutazione per il Tutor
+
+**PROMOSSO: pronto per il livello successivo.**  
+Lo studente ha compreso pienamente l'uso dei tipi `int` e `float`, le operazioni aritmetiche di base, la formattazione dell'output con `printf` (`%d`, `%.2f`) e le sequenze di escape (`\"`, `\n`). Nessun errore concettuale riscontrato.
