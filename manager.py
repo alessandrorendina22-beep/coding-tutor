@@ -1,6 +1,11 @@
 import os
 import subprocess
 import sys
+import json
+from datetime import datetime
+
+# File di log locale per lo storico persistente
+HISTORY_FILE = "local_history.json"
 
 # Codici ANSI per i colori e lo stile nel terminale
 RESET = "\033[0m"
@@ -17,6 +22,25 @@ def clear_screen():
 def run_command(command):
     result = subprocess.run(command, shell=True, capture_output=True, text=True)
     return result.stdout.strip()
+
+def load_history():
+    if os.path.exists(HISTORY_FILE):
+        try:
+            with open(HISTORY_FILE, "r", encoding="utf-8") as f:
+                return json.load(f)
+        except json.JSONDecodeError:
+            return []
+    return []
+
+def save_history_entry(message):
+    history = load_history()
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M")
+    history.append({
+        "date": timestamp,
+        "message": message
+    })
+    with open(HISTORY_FILE, "w", encoding="utf-8") as f:
+        json.dump(history, f, indent=4, ensure_ascii=False)
 
 def show_dashboard():
     clear_screen()
@@ -36,17 +60,16 @@ def show_dashboard():
     
     print()
     
-    # 2. Ultimi progressi
-    print(f"{YELLOW}📊 ULTIMI PROGRESSI (progress.md):{RESET}")
-    if os.path.exists("progress.md"):
-        with open("progress.md", "r", encoding="utf-8") as f:
-            lines = f.readlines()
-            # Mostra le ultime 8 righe in modo pulito
-            recent_lines = lines[-8:] if len(lines) >= 8 else lines
-            for line in recent_lines:
-                print(f"  │ {line.strip()}")
+    # 2. Storico locale con date (JSON)
+    print(f"{YELLOW}🕒 STORICO LOCALE (local_history.json):{RESET}")
+    history = load_history()
+    if history:
+        # Mostra gli ultimi 5 invii
+        recent_history = history[-5:]
+        for entry in recent_history:
+            print(f"  {CYAN}[{entry['date']}]{RESET} {entry['message']}")
     else:
-        print(f"  {RED}⚠️ File progress.md non ancora trovato.{RESET}")
+        print(f"  {RED}⚠️ Nessun invio registrato nel log locale.{RESET}")
         
     print(f"\n{CYAN}──────────────────────────────────────────────────────────{RESET}")
     input(f"\n{BOLD}Premi INVIO per tornare al menu principale...{RESET}")
@@ -55,11 +78,11 @@ def main():
     while True:
         clear_screen()
         print(f"{CYAN}╔══════════════════════════════════════════════════════════╗{RESET}")
-        print(f"{CYAN}║{RESET} {BOLD}⚡ C/C++ AI TUTOR MANAGER v2.0{RESET}                          {CYAN}║{RESET}")
+        print(f"{CYAN}║{RESET} {BOLD}⚡ C/C++ AI TUTOR MANAGER v3.0 (Local JSON){RESET}             {CYAN}║{RESET}")
         print(f"{CYAN}╚══════════════════════════════════════════════════════════╝{RESET}\n")
         
-        print(f"  {GREEN}[1]{RESET} 📊 Apri Dashboard e Storico")
-        print(f"  {GREEN}[2]{RESET} 🚀 Invia Soluzione (Git Commit & Push)")
+        print(f"  {GREEN}[1]{RESET} 📊 Apri Dashboard e Storico Locale")
+        print(f"  {GREEN}[2]{RESET} 🚀 Invia Soluzione (Git Commit & Push + Log)")
         print(f"  {GREEN}[3]{RESET} 🔄 Sincronizza con GitHub (Git Pull)")
         print(f"  {RED}[4]{RESET} 🚪 Esci\n")
         
@@ -69,20 +92,28 @@ def main():
             show_dashboard()
         elif choice == "2":
             clear_screen()
-            print(f"{CYAN}--- 🚀 INVIO SOLUZIONE ---{RESET}\n")
+            print(f"{CYAN}--- 🚀 INVIO SOLUZIONE & REGISTRAZIONE LOG ---{RESET}\n")
             status = run_command("git status --porcelain")
-            if status:
+            if status or os.path.exists("current_challenge.md"):
                 run_command("git add current_challenge.md")
+                if os.path.exists("manager.py"):
+                    run_command("git add manager.py")
+                if os.path.exists(HISTORY_FILE):
+                    run_command(f"git add {HISTORY_FILE}")
+                    
                 msg = input(f"{YELLOW}Inserisci un breve commento sulla soluzione: {RESET}").strip()
                 if not msg: 
                     msg = "Soluzione inviata dallo studente"
                 
-                print(f"\n{BLUE}⏳ Esecuzione commit e push in corso...{RESET}")
+                # Salva nel file JSON locale con data e ora
+                save_history_entry(msg)
+                
+                print(f"\n{BLUE}⏳ Esecuzione commit, push e aggiornamento log...{RESET}")
                 run_command(f'git commit -m "{msg}"')
                 run_command("git push")
-                print(f"\n{GREEN}✨ Push completato con successo su GitHub!{RESET}")
+                print(f"\n{GREEN}✨ Soluzione inviata e log salvato con successo!{RESET}")
             else:
-                print(f"{YELLOW}⚠️ Nessuna modifica trovata in current_challenge.md da inviare!{RESET}")
+                print(f"{YELLOW}⚠️ Nessuna modifica trovata da inviare!{RESET}")
             input(f"\n{BOLD}Premi INVIO per continuare...{RESET}")
         elif choice == "3":
             clear_screen()
