@@ -1,106 +1,70 @@
 # Sfida del Giorno
 
-### Livello 2: La Bottega dell'Alchimista (Introduzione alle Variabili)
+### Livello 3: Il Conto alla Taverna del Drago (L'Input dell'Utente con `scanf`)
 
-Complimenti per aver superato il primo livello! Finora hai stampato a schermo solo testi "fissi". Nel mondo reale, però, i programmi devono memorizzare informazioni che possono cambiare: punti vita, monete d'oro, punteggi, ecc. Per farlo, usiamo le **variabili**!
+Finora i tuoi programmi hanno lavorato con valori "fissi", scritti direttamente nel codice (chiamati in gergo *hardcoded*). Ma la vera magia della programmazione inizia quando il programma diventa **interattivo**, cioè capace di ascoltare l'utente e reagire a ciò che scrive sulla tastiera!
 
-Pensa a una variabile come a una **scatola con un'etichetta** in cui puoi inserire un valore. In C dobbiamo sempre dire al computer di che tipo è la scatola:
-- `int`: per numeri **interi** (es. `3`, `42`, `-5`).
-- `float`: per numeri con la **virgola** (es. `9.99`, `1.75`). *(Nota: in programmazione si usa il punto al posto della virgola!)*
+Per fare questo in C usiamo una funzione "gemella" di `printf`: **`scanf`** (che sta per *scan formatted*, ovvero "fai la scansione di dati formattati").
 
-Per stampare il contenuto di queste "scatole" con `printf`, usiamo dei segnaposto chiamati **specificatori di formato**:
-- `%d` per gli interi (`int`)
-- `%f` per i decimali (`float`) — se scrivi `%.2f`, il computer mostrerà solo due cifre decimali dopo il punto, perfetto per i prezzi!
-
-Ecco un piccolo esempio:
+Ecco come funziona:
 ```c
-int monete = 50;
-float peso = 12.5;
-
-printf("Hai %d monete d'oro.\n", monete);
-printf("Il tuo zaino pesa %.2f kg.\n", peso);
+int eta;
+printf("Quanti anni hai? ");
+scanf("%d", &eta); // Attenzione a quella & !
 ```
 
-Inoltre, puoi fare calcoli direttamente nel codice usando gli operatori matematici base: `+`, `-`, `*` (moltiplicazione), `/` (divisione).
+Noti qualcosa di strano? Davanti al nome della variabile c'è il simbolo **`&`** (la e commerciale, o *ampersand*).
+Perché serve? 
+Mentre `printf` ha solo bisogno di *leggere* il valore di una variabile per mostrarlo a schermo, `scanf` deve andare a *scrivere* il dato dentro la memoria del computer. Il simbolo `&` indica **l'indirizzo di memoria** della variabile: in pratica dice a `scanf` *"Ehi, prendi il numero digitato dall'utente e vallo a infilare esattamente nella scatola di `eta`!"*.
+
+---
+
+### Lo Scenario
+Sei alla *Taverna del Drago* con il tuo gruppo di avventurieri dopo una lunga missione. Il locandiere vi porta il conto totale del banchetto, ma tocca a te fare i conti e stabilire quanto deve sborsare ogni membro del gruppo per dividere equamente la spesa!
 
 ---
 
 ## Obiettivi
 
-Immagina di essere il cassiere della Bottega dell'Alchimista. Un guerriero entra per fare rifornimento prima della battaglia. Scrivi un programma in C che:
+Crea un programma in C che:
 
-1. Crei una variabile intera (`int`) per il **numero di pozioni** acquistate (scegli tu quante, ad esempio `3`).
-2. Crei una variabile decimale (`float`) per il **prezzo singolo** di una pozione (ad esempio `4.50`).
-3. Calcoli la spesa totale moltiplicando il numero di pozioni per il prezzo singolo e salvi il risultato in una nuova variabile decimale (`float totale = ...`).
-4. Stampi uno scontrino chiaro e ben formattato a video che mostri:
-   - Il numero di pozioni comprate (usando `%d`).
-   - Il costo di una singola pozione (usando `%.2f`).
-   - Il totale da pagare (usando `%.2f`).
-   - Un messaggio di saluto finale tra virgolette (sfruttando il trucco di `\"` che abbiamo visto!).
+1. **Dichiari le variabili necessarie:**
+   - Un intero per il numero di avventurieri (es. `int avventurieri;`).
+   - Un decimale per la spesa totale (es. `float conto_totale;`).
+   - Un decimale per la quota individuale (es. `float quota_singola;`).
+
+2. **Chieda i dati all'utente in modo interattivo:**
+   - Mostri un messaggio di richiesta con `printf` (es. `"Quanti avventurieri siete al tavolo? "`).
+   - Usi `scanf` per leggere il numero intero inserito dall'utente.
+   - Mostri un secondo messaggio (es. `"A quanto ammonta il conto totale in monete d'oro? "`).
+   - Usi `scanf` con `%f` e la `&` per leggere il valore decimale.
+
+3. **Esegua il calcolo:**
+   - Calcoli la quota a testa dividendo il conto totale per il numero di avventurieri (`conto_totale / avventurieri`).
+
+4. **Stampi il riepilogo:**
+   - Mostri a video un riassunto ordinato con la spesa totale e la quota esatta che ogni avventuriero deve pagare, formattando le monete con **due cifre decimali** (`%.2f`).
+   - Concluda il programma con `return 0;`.
+
+*Esempio di come dovrebbe apparire il terminale durante l'esecuzione:*
+```text
+=== TAVERNA DEL DRAGO ===
+Quanti avventurieri siete al tavolo? 4
+A quanto ammonta il conto totale? 54.50
+
+--- DIVISIONE DEL CONTO ---
+Conto totale: 54.50 monete
+Ogni avventuriero deve pagare: 13.62 monete d'oro.
+```
 
 ---
 
 ## La mia soluzione e i miei dubbi
 
 ```c
-#include <stdio.h>
-
-int main(){
-    int pozioni=3;
-    float prezzo_singolo=2.50;
-    float totale=pozioni*prezzo_singolo;
-    printf("Il numero delle pozioni comprate è %d\n", pozioni);
-    printf("Il costo della singola pozione è %.2f\n", prezzo_singolo);
-    printf("Il totale da pagare è %.2f\n", totale);
-    printf("\"Buona giornata e grazie di essere passati qui alla Bottega dell'Alchimista\"\n");
-}
+// Incolla qui il tuo codice
 
 
 ```
 
-*Argomento molto interessante sopratutto gli specificatori di formato*
-
----
-# Correzione del Tutor
-Ciao! È un piacere vedere il tuo entusiasmo per gli specificatori di formato: sono davvero uno degli strumenti fondamentali del C per comunicare con l'utente in modo ordinato e professionale.
-
-Vediamo insieme l'analisi del tuo codice!
-
----
-
-### Analisi della Soluzione
-
-Il tuo codice è **eccellente**. Hai centrato in pieno tutti gli obiettivi richiesti dalla consegna. Ecco cosa hai fatto particolarmente bene:
-
-1. **Scelta e inizializzazione delle variabili:**
-   - Hai usato correttamente `int` per `pozioni` e `float` per `prezzo_singolo`.
-   - Il calcolo `float totale = pozioni * prezzo_singolo;` è perfetto. Il C effettua in automatico una *conversione implicita* (promuove l'intero a float durante l'operazione) per garantirti un risultato decimale preciso.
-2. **Specificatori di formato:**
-   - Hai usato `%d` per l'intero e `%.2f` per i decimali. Il formato `%.2f` è la scelta ideale per gestire valori monetari o misure che richiedono solo due cifre decimali.
-3. **Sequenze di escape:**
-   - Ottimo l'uso di `\"` per stampare le virgolette senza interrompere la stringa e di `\n` per andare a capo.
-
----
-
-### Piccoli consigli da professionista (Best Practices)
-
-Non ci sono veri e propri errori nel tuo codice, ma ecco due dettagli per renderlo ancora più solido:
-
-1. **Aggiungere `return 0;` alla fine del `main`:**
-   In C, la funzione `main` restituisce un intero (`int main()`). Scrivere `return 0;` prima della parentesi graffa di chiusura è una buona abitudine: comunica al sistema operativo che il programma è terminato con successo (senza errori).
-   ```c
-       printf("\"Buona giornata e grazie di essere passati qui alla Bottega dell'Alchimista\"\n");
-       return 0;
-   }
-   ```
-2. **Spaziature per la leggibilità (Stile):**
-   Mettere uno spazio attorno agli operatori rende il codice più facile da leggere:
-   - Scrivi `int pozioni = 3;` invece di `int pozioni=3;`
-   - Scrivi `float totale = pozioni * prezzo_singolo;`
-
----
-
-## Valutazione per il Tutor
-
-**PROMOSSO: pronto per il livello successivo.**  
-Lo studente ha compreso pienamente l'uso dei tipi `int` e `float`, le operazioni aritmetiche di base, la formattazione dell'output con `printf` (`%d`, `%.2f`) e le sequenze di escape (`\"`, `\n`). Nessun errore concettuale riscontrato.
+*(Scrivi pure qui sotto eventuali dubbi o comportamenti del codice che non ti convincono!)*
