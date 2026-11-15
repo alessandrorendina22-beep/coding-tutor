@@ -1,41 +1,36 @@
 # Sfida del Giorno
 
-### Registro Voti Dinamico (C / C++)
+### Benvenuto nel C: Crea la tua "Scheda Personaggio"!
 
-Ciao! Oggi metteremo alla prova le tue competenze su tre dei concetti più importanti e temuti della programmazione a basso livello: **struct**, **puntatori** e **gestione dinamica della memoria** (`malloc`/`free` in C o `new`/`delete` in C++).
+Ciao! Benvenuto nel fantastico mondo della programmazione in C. Il C è un linguaggio potente, veloce e alla base di tantissimi sistemi moderni (come i sistemi operativi e i motori grafici dei videogiochi!).
 
-Immagina di dover creare il nucleo di un registro scolastico. Il programma non conosce a priori il numero di studenti della classe: questo dato verrà inserito dall'utente all'avvio. Dovrai allocare lo spazio necessario a runtime, raccogliere i dati, trovare lo studente con il rendimento migliore e assicurarti di non lasciare alcun *memory leak*.
+Per iniziare il nostro percorso partiremo dalle fondamenta assolute: la struttura di base di un programma C e come far "parlare" il computer sullo schermo usando la funzione `printf`.
+
+Immagina di dover creare la schermata iniziale per un gioco di ruolo: il tuo primo compito è stampare a video la scheda del tuo personaggio!
 
 ---
 
 ## Obiettivi
 
-1. **Definisci la `struct Studente`:**
-   - `nome`: stringa (array di `char` di dimensione massima 50).
-   - `matricola`: intero.
-   - `media`: float (compresa tra 2.0 e 10.0).
-
-2. **Allocazione Dinamica:**
-   - Chiedi all'utente quanti studenti ($N$) compongono la classe.
-   - Alloca dinamicamente memoria sufficiente a contenere l'array di $N$ studenti.
-   - Verifica sempre che l'allocazione sia andata a buon fine.
-
-3. **Funzioni con Puntatori:**
-   - Implementa una funzione per l'inserimento dei dati:  
-     `void inserisciDati(Studente* classe, int n);`
-   - Implementa una funzione per trovare lo studente migliore, che restituisca un **puntatore** all'elemento trovato:  
-     `Studente* trovaMigliore(Studente* classe, int n);`
-   - Implementa una funzione per calcolare la media generale della classe:  
-     `float calcolaMediaClasse(const Studente* classe, int n);`
-
-4. **Stampa e Gestione della Memoria:**
-   - Nel `main`, mostra i dati dello studente con la media più alta (accedendovi tramite il puntatore restituito) e la media totale della classe.
-   - **Fondamentale:** Dealloca correttamente tutta la memoria dinamica prima del termine del programma.
-
-*Bonus (facoltativo):* Prova a scrivere il codice in C puro o in C++ moderno a tua scelta, specificando quale standard hai scelto di seguire!
+Scrivi un programma in C che:
+1. Includa la libreria standard fondamentale per mostrare testo a schermo (`<stdio.h>`).
+2. Contenga la funzione principale da cui tutto ha inizio (`main`).
+3. Usi il comando `printf` e il carattere speciale di "a capo" (`\n`) per stampare su righe diverse:
+   - Un titolo decorativo (es. `=== SCHEDA PERSONAGGIO ===`)
+   - Il nome del tuo personaggio
+   - La sua classe o ruolo (es. *Guerriero*, *Hacker*, *Mago*)
+   - Il suo livello iniziale (es. *Livello: 1*)
+   - Un motto o una frase d'impatto tra virgolette
+4. Concluda correttamente il programma restituendo il valore `0`.
 
 ---
 
 ## La mia soluzione e i miei dubbi
 
-*(Incolla qui il tuo codice e scrivi le domande o i passaggi che non ti sono del tutto chiari)*
+```c
+// Inserisci qui il tuo codice C:
+
+```
+
+**I miei dubbi / Cosa ho trovato difficile:**
+- 
