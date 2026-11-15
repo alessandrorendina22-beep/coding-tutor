@@ -1,0 +1,58 @@
+name: AI Coding Tutor
+
+on:
+  schedule:
+    - cron: '0 8 * * *'
+  push:
+    paths:
+      - 'current_challenge.md'
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'Modalità di esecuzione'
+        required: true
+        default: 'daily'
+        type: choice
+        options:
+          - daily
+          - review
+
+permissions:
+  contents: write
+
+jobs:
+  run-tutor:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-actions[bot]'
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run Tutor Script
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          if [ "${{ github.event_name }}" == "schedule" ]; then
+            python scripts/tutor.py daily
+          elif [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
+            python scripts/tutor.py ${{ github.event.inputs.mode }}
+          else
+            python scripts/tutor.py review
+          fi
+
+      - name: Commit and push AI response
+        run: |
+          git config user.name "AI Tutor Bot"
+          git config user.email "actions@github.com"
+          git add current_challenge.md progress.md
+          git commit -m "AI Tutor: aggiornamento sfida/feedback" || exit 0
+          git push
