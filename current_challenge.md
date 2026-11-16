@@ -62,9 +62,24 @@ Ogni avventuriero deve pagare: 13.62 monete d'oro.
 ## La mia soluzione e i miei dubbi
 
 ```c
-// Incolla qui il tuo codice
+#include <stdio.h>
+
+int main(){
+    int avventurieri;
+    float conto_totale,quota_singola;
+
+    printf("\"In quanti siete?\"\n");
+    scanf("%d", &avventurieri);
+    printf("A quanto ammonta il conto totale?\n");
+    scanf("%f", &conto_totale);
+    quota_singola = conto_totale/avventurieri;
+    printf("---RESOCONTO---\n");
+    printf("Il conto totale è di %.2f\n",conto_totale);
+    printf("La quota singola ammonta a %.2f\n",quota_singola);
+    return 0;
+}
 
 
 ```
 
-*(Scrivi pure qui sotto eventuali dubbi o comportamenti del codice che non ti convincono!)*
+*Penso che sia tutto okk tranne una cosa, ossia non capisco perchè per esempio quando sto eseguendo una scanf metto anche %d o %f?. Inoltre d'ora in poi non darmi troppi aiuti per esempio nelle formule come conto_totale / avventurieri, pero continuami ad indicare le dimenticanze che ho avuto in precedenza come il return 0 nel caso manca*
