@@ -68,3 +68,55 @@ int main(){
 ```
 
 *Tutto chiaro!*
+
+---
+# Correzione del Tutor
+Ciao! Ottimo lavoro: la tua soluzione è **perfetta, corretta e rispetta al 100% tutti i requisiti della traccia**.
+
+Non ci sono errori logici o di sintassi, il programma compila ed esegue esattamente ciò che deve fare.
+
+---
+
+### Analisi del tuo codice
+
+1. **Gestione dell'input (`scanf`):**
+   Hai utilizzato correttamente i formattatori `%d` per l'intero e `%f` per il decimale, ricordandoti sempre l'operatore **`&`** davanti al nome della variabile (`&quantita_pozioni` e `&costo_unitario`). Questa è solitamente la trappola principale per chi approccia `scanf` le prime volte, ma tu l'hai superata senza problemi.
+
+2. **Calcoli e tipi di dato:**
+   La moltiplicazione `totale = costo_unitario * quantita_pozioni;` è corretta. Il C converte automaticamente l'intero `quantita_pozioni` in un `float` durante il calcolo, memorizzando il risultato corretto in `totale`.
+
+3. **Stampa e formattazione (`printf`):**
+   - Hai gestito benissimo la precisione dei decimali con `%.2f`.
+   - Hai usato correttamente i caratteri di escape `\"` per inserire le virgolette letterali nella frase di ringraziamento.
+
+---
+
+### Due piccoli consigli di stile (per renderlo ancora più professionale)
+
+* **Prompt di input più naturali:**  
+  Quando chiedi un dato all'utente, di solito è preferibile non andare a capo con `\n`, ma lasciare uno spazio alla fine del testo:
+  ```c
+  printf("Quante pozioni vuoi acquistare? ");
+  scanf("%d", &quantita_pozioni);
+  ```
+  In questo modo l'utente digiterà il numero sulla **stessa riga** della domanda, rendendo l'interfaccia a riga di comando più ordinata e pulita.
+
+* **Andare a capo alla fine:**  
+  Nel tuo ultimo `printf`:
+  ```c
+  printf("\"Grazie e buona giornata\"\n"); // Aggiungere \n qui
+  ```
+  Aggiungere un `\n` finale evita che l'eventuale prompt della shell/terminale si attacchi subito dopo la parola `"giornata"`.
+
+* **Spaziature per la leggibilità:**  
+  Mantenere uno spazio dopo le virgole (es. `scanf("%d", &quantita_pozioni);`) e attorno agli operatori (`totale = costo_unitario * quantita_pozioni;`) rende il codice ancora più leggibile e conforme agli standard C.
+
+---
+
+## Valutazione per il Tutor
+
+**Esito:** **PROMOSSO: pronto per il livello successivo**  
+Lo studente ha compreso e applicato in modo impeccabile:
+- L'utilizzo di `scanf` con i corretti specificatori di formato (`%d`, `%f`) e l'operatore indirizzo `&`.
+- La dichiarazione e il calcolo con tipi numerici misti (`int` e `float`).
+- La formattazione avanzata dell'output con `printf` (precisione `%.2f` e caratteri di escape `\"`).
