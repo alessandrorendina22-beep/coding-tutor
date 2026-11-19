@@ -81,3 +81,56 @@ int main(){
 ```
 
 *non ho dubbi, ma ti sei dimenticato in questo prompt di mettere alla fine la sezione per inseire il codice. Non dimenticarlo piu. Per il resto è tutto ben fatto!*
+
+---
+# Correzione del Tutor
+Ciao! Prima di tutto, grazie per la segnalazione: farò in modo di inserire sempre il template pronto per il codice nei prossimi esercizi! 😉
+
+Passiamo ora all'analisi del tuo codice.
+
+---
+
+### Analisi del Codice
+
+Il tuo programma è **eccellente**: pulito, perfettamente funzionante e rispetta alla lettera tutti i requisiti della traccia.
+
+Ecco i punti di forza della tua soluzione:
+1. **Scelta dei tipi corretta:** Hai usato `float` per i valori monetari e `int` per il conteggio delle pozioni, operando correttamente con le conversioni implicite nella moltiplicazione `totale_parziale = numero_pozioni * costo_pozione;`.
+2. **Logica condizionale precisa:** Hai utilizzato `if`, `else if` ed `else` in maniera impeccabile, applicando esattamente l'operatore `&&` come richiesto.
+3. **Formattazione dell'output:** Hai usato correttamente la specifica `%.2f` per mostrare due decimali sul prezzo finale.
+
+---
+
+### Piccoli spunti di miglioramento (Consigli da Pro)
+
+Non ci sono veri e propri errori bloccanti, ma un paio di dettagli possono rendere il tuo codice ancora più professionale:
+
+1. **Ridondanza logica (approfondimento teorico):**
+   Hai scritto:
+   ```c
+   if (numero_pozioni >= 10) {
+       ...
+   } else if (numero_pozioni >= 5 && numero_pozioni <= 9) {
+       ...
+   }
+   ```
+   Poiché la traccia chiedeva espressamente di sperimentare l'operatore `&&`, **hai fatto benissimo a usarlo**. 
+   Tuttavia, tieni a mente che in una catena `if - else if`, se il programma arriva all'istruzione `else if`, significa che la prima condizione (`>= 10`) era già **falsa**. Di conseguenza, il fatto che `numero_pozioni` sia minore o uguale a 9 è già matematicamente certo. In un contesto reale, sarebbe bastato scrivere `else if (numero_pozioni >= 5)`.
+
+2. **Caratteri accentati nella console:**
+   Hai scritto `printf("è stato applicato...");`. In ambiente Windows/DOS o a seconda dell'encoding del terminale, le lettere accentate dirette (come `è` o `à`) possono talvolta apparire con simboli strani (es. `Š` o caratteri ASCII non voluti). Per evitarlo, puoi scrivere `E' stato...` oppure configurare l'encoding del terminale su UTF-8.
+
+3. **`\n` finale e refuso nel testo:**
+   - Nel prompt hai scritto `"Insersci"` (manca una 'i').
+   - Nell'ultimo `printf`, è buona norma chiudere con un a capo `\n`:
+     ```c
+     printf("Il totale con lo sconto è di %.2f monete\n", totale);
+     ```
+
+---
+
+## Valutazione per il Tutor
+
+**PROMOSSO: pronto per il livello successivo.**
+
+Lo studente ha dimostrato piena comprensione della struttura `if - else if - else` e dell'operatore logico AND (`&&`). Il codice compila senza problemi, la gestione dei tipi di dato è corretta e lo stile di scrittura è pulito e leggibile. Nessuna criticità riscontrata.
