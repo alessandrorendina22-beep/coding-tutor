@@ -47,9 +47,24 @@ Scrivi un programma in C che simuli la cassa interattiva di un negozio per avven
 ## La mia soluzione e i miei dubbi
 
 ```c
-// Incolla qui il tuo codice
+#include <stdio.h>
+
+int main(){
+    int quantita_pozioni;
+    float costo_unitario, totale;
+    printf("Quante pozioni vuoi acquistare?\n");
+    scanf("%d",&quantita_pozioni);
+    printf("Inserisci il prezzo di una singola pozione: \n");
+    scanf("%f",&costo_unitario);
+    totale=costo_unitario*quantita_pozioni;
+    printf("Il numero di pozioni acquistate è %d\n",quantita_pozioni);
+    printf("Il costo singolo di una pozione è %.2f\n",costo_unitario);
+    printf("Il totale ammonta a %.2f\n",totale);
+    printf("\"Grazie e buona giornata\"");
+    return 0;
+}
 
 
 ```
 
-*(Scrivi qui sotto se hai avuto dubbi o qualcosa non ti è chiaro!)*
+*Tutto chiaro!*
