@@ -48,3 +48,36 @@ Crea un programma in C che calcoli il conto per l'acquisto delle pozioni applica
 ---
 
 ## La mia soluzione e i miei dubbi
+
+```c
+#include <stdio.h>
+
+int main(){
+    float costo_pozione, totale, totale_parziale, sconto;
+    int numero_pozioni;
+
+    printf("Inserisci il prezzo della singola pozione: ");
+    scanf("%f", &costo_pozione);
+    printf("Insersci il numero di pozioni: ");
+    scanf("%d", &numero_pozioni);
+    totale_parziale = numero_pozioni * costo_pozione;
+
+    if (numero_pozioni >= 10){
+        sconto = totale_parziale * 0.20;
+        printf("è stato applicato lo sconto del 20%\n");
+    }
+    else if (numero_pozioni >=5 && numero_pozioni <=9){
+        sconto = totale_parziale * 0.10;
+        printf("è stato applicato lo sconto del 10%\n");
+    }
+    else{
+        sconto = 0;
+        printf("Non è stato applicato nessuno sconto.\n");
+    }
+    totale = totale_parziale - sconto;
+    printf("Il totale con lo sconto è di %.2f monete", totale);
+    return 0;
+}
+```
+
+*non ho dubbi, ma ti sei dimenticato in questo prompt di mettere alla fine la sezione per inseire il codice. Non dimenticarlo piu. Per il resto è tutto ben fatto!*
