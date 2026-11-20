@@ -71,3 +71,43 @@ int main(){
 ```
 
 *Tutto chiaro!*
+
+---
+# Correzione del Tutor
+Ciao! Ottimo lavoro, hai completato la sfida in modo impeccabile!
+
+Ecco un'analisi dettagliata del tuo codice e qualche piccolo consiglio per migliorare ulteriormente.
+
+---
+
+### Analisi del Codice
+
+1. **Logica del ciclo `while`:** 
+   Hai impostato perfettamente la condizione `colpo <= i`. Partendo da `colpo = 1`, il ciclo esegue esattamente il numero di iterazioni richieste dall'utente.
+2. **Incremento del contatore:** 
+   L'istruzione `colpo++;` è posizionata correttamente all'interno del blocco. In questo modo si evita il rischio di creare un ciclo infinito.
+3. **Formattazione e output:** 
+   L'uso dei caratteri di escape per le virgolette (`\"...\"`) nella riga finale è un ottimo tocco di stile che dimostra una buona padronanza della sintassi di base.
+
+---
+
+### Piccoli consigli da "Pro" (Best Practices)
+
+Il tuo codice funziona al 100%, ma ecco due dettagli che possono renderlo ancora più professionale:
+
+1. **Convenzione sui nomi delle variabili:**
+   * Di solito, nei linguaggi di programmazione, lettere brevi come `i`, `j`, `k` si usano per i **contatori** (gli indici).
+   * Per la variabile che memorizza il valore scelto dall'utente sarebbe preferibile un nome descrittivo come `colpi_totali` o `numero_colpi`.
+   * Nel tuo caso hai usato `colpo` per il contatore (ottimo nome!) e `i` per il limite massimo: invertirli o usare `totale_colpi` renderebbe il codice ancora più chiaro a colpo d'occhio.
+
+2. **Cosa succede con numeri minori di 1?**
+   * Se l'utente inserisce `0` o `-5`, la condizione `colpo <= i` (`1 <= 0`) risulterà subito falsa: il ciclo verrà saltato e Kevin completerà l'allenamento senza dare fendenti. 
+   * Il ciclo `while` gestisce questa casistica in modo naturale (controlla la condizione *prima* di eseguire il corpo), il che è corretto! Più avanti vedremo come validare l'input dell'utente con controlli dedicati.
+
+---
+
+## Valutazione per il Tutor
+
+**PROMOSSO: pronto per il livello successivo**
+
+Lo studente ha compreso appieno il funzionamento del ciclo `while`, la corretta inizializzazione del contatore, la condizione di terminazione e l'incremento. Ha svolto la consegna in autonomia senza dubbi residui. Si può procedere con i prossimi argomenti (es. ciclo `for` o `do-while`).
