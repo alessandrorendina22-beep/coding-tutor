@@ -56,11 +56,18 @@ Fendente numero 3 sferrato!
 ```c
 #include <stdio.h>
 
-int main() {
-    // Scrivi qui il tuo codice
-    
+int main(){
+    int i, colpo = 1;
+    printf("Quanti colpi vuoi che sferri Kevin? ");
+    scanf("%d", &i);
+    while(colpo <= i){
+        printf("Fendente numero %d sferrato!\n",colpo);
+        colpo++;
+    }
+    printf("\"Allenamento completato! Kevin e' piu' forte di prima!\"\n");
     return 0;
 }
+
 ```
 
-*(Scrivi pure qui sotto eventuali domande o passaggi che ti hanno fatto riflettere!)*
+*Tutto chiaro!*
